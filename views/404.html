@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | TechFlow Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .error-animation {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .error-code {
+            font-size: 12rem;
+            font-weight: bold;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .error-icon {
+            font-size: 6rem;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .error-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .error-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .action-buttons {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 0 10px 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+
+        .btn-primary:hover {
+            background: #f8f9fa;
+            color: #5a67d8;
+            transform: translateY(-3px);
+        }
+
+        .helpful-links {
+            margin-top: 30px;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .helpful-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .link-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .link-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .search-box {
+            margin: 30px 0;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #5a67d8;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: floatAround 20s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        .floating-element:nth-child(4) {
+            bottom: 10%;
+            right: 20%;
+            animation-delay: 15s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(100px, -50px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(-50px, -100px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(-100px, 50px) rotate(270deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 8rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .error-message {
+                font-size: 1rem;
+            }
+
+            .btn {
+                display: block;
+                margin: 10px auto;
+                max-width: 250px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element">💻</div>
+        <div class="floating-element">🔧</div>
+        <div class="floating-element">⚙️</div>
+        <div class="floating-element">🚀</div>
+    </div>
+
+    <div class="container">
+        <div class="error-animation">
+            <div class="error-icon">🤖</div>
+            <div class="error-code">404</div>
+        </div>
+
+        <h1 class="error-title">Oops! Page Not Found</h1>
+        <h2 class="error-subtitle">Houston, we have a problem!</h2>
+
+        <p class="error-message">
+            The page you're looking for seems to have wandered off into the digital void.
+            Don't worry though - even our best developers sometimes take a wrong turn.
+            Let's get you back on track to where you need to be!
+        </p>
+
+        <div class="action-buttons">
+            <a href="/" class="btn btn-primary">🏠 Take Me Home</a>
+            <a href="javascript:history.back()" class="btn">⬅️ Go Back</a>
+            <a href="/contact-us" class="btn">🆘 Get Help</a>
+        </div>
+
+        <div class="search-box">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search our site..." id="searchInput">
+                <button class="search-btn" onclick="performSearch()">🔍</button>
+            </div>
+        </div>
+
+        <div class="helpful-links">
+            <h3>Popular Pages</h3>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="/">🏠 Homepage</a>
+                </div>
+                <div class="link-item">
+                    <a href="/about">👥 About Us</a>
+                </div>
+                <div class="link-item">
+                    <a href="/contact-us">📞 Contact</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">💼 Services</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">📂 Portfolio</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">📝 Blog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search functionality
+        function performSearch()
+        {
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            if (searchTerm)
+            {
+                // In a real application, this would redirect to a search results page
+                // For now, we'll just redirect to the homepage with a search parameter
+                window.location.href = `/?search=${encodeURIComponent(searchTerm)}`;
+            }
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('searchInput').addEventListener('keypress', function (e)
+        {
+            if (e.key === 'Enter')
+            {
+                performSearch();
+            }
+        });
+
+        // Add some random movement to floating elements
+        document.addEventListener('DOMContentLoaded', function ()
+        {
+            const floatingElements = document.querySelectorAll('.floating-element');
+
+            floatingElements.forEach((element, index) =>
+            {
+                // Add random delay and duration to make movement more organic
+                const randomDelay = Math.random() * 10;
+                const randomDuration = 15 + Math.random() * 10;
+
+                element.style.animationDelay = randomDelay + 's';
+                element.style.animationDuration = randomDuration + 's';
+            });
+        });
+
+        // Fun Easter egg - click on the 404 number
+        document.querySelector('.error-code').addEventListener('click', function ()
+        {
+            this.style.transform = 'rotate(360deg)';
+            this.style.transition = 'transform 1s ease';
+
+            setTimeout(() =>
+            {
+                this.style.transform = '';
+                this.style.transition = '';
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
