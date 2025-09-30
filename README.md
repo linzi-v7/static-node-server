@@ -14,7 +14,7 @@ The primary goal of this project was to understand the fundamentals of Node.js b
 
 ## ✨ Features
 
-- **Static Page Serving**: Serves `index.html`, `about.html`, and `contact-me.html`.
+- **Static Page Serving**: Serves `index.html`, `about.html`, and `contact-us.html`.
 - **Custom 404 Page**: Displays a `404.html` page for any URL that doesn't match a defined route.
 - **No Dependencies**: Built entirely with built-in Node.js modules. No `npm install` needed!
 - **Basic Routing**: Implements a simple routing system to direct users to the correct page.
@@ -31,23 +31,23 @@ You must have [Node.js](https://nodejs.org/) installed on your computer.
 
 ### Installation & Usage
 
-1.  **Clone the repository:**
-    ```sh
-    git clone [https://github.com/linzi-v7/static-node-server.git](https://github.com/linzi-v7/static-node-server.git)
-    ```
+1. **Clone the repository**
 
-2.  **Navigate to the project's root directory:**
+2. **Navigate to the project's root directory:**
+
     ```sh
     cd static-node-server
     ```
 
-3.  **Run the server from the root directory:**
+3. **Run the server from the root directory:**
+
     ```sh
     node app/index.js
     ```
+
     *This command tells Node to run the `index.js` file located inside the `app` folder.*
 
-4.  **Open your browser** and visit one of the URLs below. By default, the server runs on port 8080.
+4. **Open your browser** and visit one of the URLs below. By default, the server runs on port 8080.
 
 ---
 
@@ -55,10 +55,10 @@ You must have [Node.js](https://nodejs.org/) installed on your computer.
 
 The server will serve a specific page for the following routes:
 
--   **Home**: `http://localhost:8080/` -> `views/index.html`
--   **About**: `http://localhost:8080/about` -> `views/about.html`
--   **Contact**: `http://localhost:8080/contact-us` -> `views/contact-me.html`
--   **Not Found**: Any other URL -> `views/404.html`
+- **Home**: `http://localhost:8080/` -> `views/index.html`
+- **About**: `http://localhost:8080/about` -> `views/about.html`
+- **Contact**: `http://localhost:8080/contact-us` -> `views/contact-us.html`
+- **Not Found**: Any other URL -> `views/404.html`
 
 ---
 
